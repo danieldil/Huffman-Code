@@ -10,6 +10,10 @@ public class HuffmanCode implements Comparable<HuffmanCode>{
 	public String toString(){
 		return "\nletter:"+ this.letter + " probability: "+this.prob+ "\n";
 	}
+	public void dlone(HuffmanCode suspect){
+		suspect.letter = letter;
+		suspect.prob = prob;
+	}
 	public boolean isLessThan(HuffmanCode s){
 		if(prob < s.prob){
 			return true;
@@ -26,47 +30,67 @@ public class HuffmanCode implements Comparable<HuffmanCode>{
 		s.letter = temp;
 		s.prob = tempd;
 	}
-	public static void add2smallest(LinkedList<HuffmanCode> s,ArrayList<Node> nArray){
+	public static ArrayList<Node> add2smallest(LinkedList<HuffmanCode> s,ArrayList<Node> nArray){
 		Collections.sort(s);
 		if(s.size() >= 2){
+			
 			Node head;
-			Node left = new Node(s.get(1),null,null);
-			Node right = new Node(s.get(0),null,null);
-			head = new Node(null,left,right);
+//			if(s.size()<1){
+			Node left = new Node(s.get(1),null,null,null);
+			Node right = new Node(s.get(0),null,null,null);
+//			}
+//			else{
+//				Node left = new Node(s.get(1),null,null);
+//				Node right = new Node(s.get(0),null,null);
+//			}
+			head = new Node(null,left,right,s.get(1).letter + s.get(0).letter);
 			nArray.add(head);
-			System.out.println(head);
+			//System.out.println(head);
 			HuffmanCode add = 
 			new HuffmanCode(s.get(1).letter + s.get(0).letter,s.get(1).prob+s.get(0).prob);
 			s.remove(0);
 			s.remove(0);
 			//System.out.println(s);
-			s.addFirst(add);
-			//System.out.println(s);
-			System.out.println(nArray);
+			s.add(add);
+			System.out.println(s);
+
+			return nArray;
 		}
 		else{
 			System.out.println("too small of a list");
 		}
+		return nArray;
 	}
+@SuppressWarnings("unchecked")
 public static void main(String[] args){
 	ArrayList<Node> nArray = new ArrayList<Node>();
 	LinkedList<HuffmanCode> hList = new LinkedList<HuffmanCode>();
-	hList.add(new HuffmanCode("a",.220));
-	hList.add(new HuffmanCode("b",.660));
-	hList.add(new HuffmanCode("c",.150));
-	hList.add(new HuffmanCode("d",.290));
-	hList.add(new HuffmanCode("e",.610));
-	hList.add(new HuffmanCode("f",.100));
-	hList.add(new HuffmanCode("g",.299));
-	hList.add(new HuffmanCode("h",.860));
-	hList.add(new HuffmanCode("i",.920));
+	LinkedList<HuffmanCode> hListcopy = new LinkedList<HuffmanCode>();
+	hList.add(new HuffmanCode("a",.25));
+	hList.add(new HuffmanCode("b",.15));
+	hList.add(new HuffmanCode("c",.40));
+	hList.add(new HuffmanCode("d",.20));
+	hList.add(new HuffmanCode("e",.10));
 	
-	while(hList.size() > 2)
-	add2smallest(hList,nArray);
-	
-	for(int i=0;i<nArray.size();i++){
-		System.out.println(nArray.indexOf(i));
+	//make a copy of the list
+	for(int i = 0; i < hList.size(); i++){
+		hListcopy.add(new HuffmanCode("",0));
+		hList.get(i).dlone(hListcopy.get(i));
 	}
+	
+	
+	while(hListcopy.size() >= 2)
+	nArray = add2smallest(hListcopy,nArray);
+	
+	for(int i = nArray.size()-1; i >= 0 ; i--){
+	System.out.println(nArray.get(i));
+	System.out.println(i);
+	
+	}
+	
+//	for(int i=0;i<nArray.size();i++){
+//		System.out.println(nArray.indexOf(i));
+//	}
 	
 	
 	

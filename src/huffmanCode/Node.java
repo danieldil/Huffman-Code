@@ -4,10 +4,12 @@ public class Node {
 	public HuffmanCode data;
 	public Node left;
 	public Node right;
-	public Node(HuffmanCode d, Node l, Node r){
+	String label;
+	public Node(HuffmanCode d, Node l, Node r, String s){
 		data = d;
 		left = l;
-		right =r;
+		right = r;
+		label = s;
 	}
 	public void set(HuffmanCode d, Node l, Node r){
 		data = d;
@@ -17,7 +19,8 @@ public class Node {
 	public String toString(){
 		String s;
 		if(this.right != null){
-			s = String.valueOf((this.left.data.prob + "   " + this.right.data.prob));
+			s = 
+			String.valueOf(("   "+this.label+"\n"+this.left.data.prob + "   _   " + this.right.data.prob));
 		}
 		else{
 			s = String.valueOf(this.left.data.prob);
