@@ -61,16 +61,43 @@ public class HuffmanCode implements Comparable<HuffmanCode>{
 		}
 		return nArray;
 	}
+	public static void makeTree(ArrayList<Node> n){
+		boolean left = false;
+		boolean right = false;
+		int lefti = -1;
+		String firstletter = String.valueOf(n.get(n.size()-1).label.charAt(0));
+		String lastletter = String.valueOf(n.get(n.size()-1).label.charAt(n.size()-1));
+		
+		for(int i = 0; i < n.size(); i++){
+			if(n.get(i).label.contains(firstletter)){
+			left = true;
+			lefti = i;
+			}
+		}
+		if(!left){
+			right = true;
+		}
+		if(left){
+			//search the whole list with the start letter to see if it exists before
+			n.get(n.size()).left = n.get(lefti);
+		}
+	}
 @SuppressWarnings("unchecked")
 public static void main(String[] args){
 	ArrayList<Node> nArray = new ArrayList<Node>();
 	LinkedList<HuffmanCode> hList = new LinkedList<HuffmanCode>();
 	LinkedList<HuffmanCode> hListcopy = new LinkedList<HuffmanCode>();
-	hList.add(new HuffmanCode("a",.25));
-	hList.add(new HuffmanCode("b",.15));
-	hList.add(new HuffmanCode("c",.40));
-	hList.add(new HuffmanCode("d",.20));
-	hList.add(new HuffmanCode("e",.10));
+	hList.add(new HuffmanCode("a",.1));
+	hList.add(new HuffmanCode("b",.2));
+	hList.add(new HuffmanCode("c",.08));
+	hList.add(new HuffmanCode("d",.02));
+	hList.add(new HuffmanCode("e",.05));
+	hList.add(new HuffmanCode("f",.05));
+	hList.add(new HuffmanCode("g",.04));
+	hList.add(new HuffmanCode("h",.03));
+	hList.add(new HuffmanCode("i",.2));
+	hList.add(new HuffmanCode("j",.23));
+	
 	
 	//make a copy of the list
 	for(int i = 0; i < hList.size(); i++){
@@ -81,6 +108,10 @@ public static void main(String[] args){
 	
 	while(hListcopy.size() >= 2)
 	nArray = add2smallest(hListcopy,nArray);
+	
+	makeTree(nArray);
+	
+	
 	
 	for(int i = nArray.size()-1; i >= 0 ; i--){
 	System.out.println(nArray.get(i));

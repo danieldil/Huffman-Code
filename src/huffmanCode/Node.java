@@ -20,7 +20,16 @@ public class Node {
 		String s;
 		if(this.right != null){
 			s = 
-			String.valueOf(("   "+this.label+"\n"+this.left.data.prob + "   _   " + this.right.data.prob));
+			String.valueOf((
+					"   "+
+					this.label+
+					"\n"+
+					this.left.data.prob+ 
+					//this.left.data.letter+ 
+					"   _   "+ 
+					this.right.data.prob
+					//this.right.data.letter
+					));
 		}
 		else{
 			s = String.valueOf(this.left.data.prob);
