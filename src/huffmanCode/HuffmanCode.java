@@ -7,6 +7,10 @@ public class HuffmanCode implements Comparable<HuffmanCode>{
 		letter = iletter;
 		prob = iprob;
 	}
+	public HuffmanCode() {
+		letter = "-1";
+		prob = -1;
+	}
 	public String toString(){
 		return "\nletter:"+ this.letter + " probability: "+this.prob+ "\n";
 	}
@@ -36,14 +40,14 @@ public class HuffmanCode implements Comparable<HuffmanCode>{
 			
 			Node head;
 //			if(s.size()<1){
-			Node left = new Node(s.get(1),null,null,null);
-			Node right = new Node(s.get(0),null,null,null);
+			Node left = new Node(s.get(1),new Node(),new Node(),null);
+			Node right = new Node(s.get(0),new Node(),new Node(),null);
 //			}
 //			else{
 //				Node left = new Node(s.get(1),null,null);
 //				Node right = new Node(s.get(0),null,null);
 //			}
-			head = new Node(null,left,right,s.get(1).letter + s.get(0).letter);
+			head = new Node(new HuffmanCode(),left,right,s.get(1).letter + s.get(0).letter);
 			nArray.add(head);
 			//System.out.println(head);
 			HuffmanCode add = 
@@ -52,7 +56,7 @@ public class HuffmanCode implements Comparable<HuffmanCode>{
 			s.remove(0);
 			//System.out.println(s);
 			s.add(add);
-			System.out.println(s);
+			//System.out.println(s);
 
 			return nArray;
 		}
@@ -60,6 +64,39 @@ public class HuffmanCode implements Comparable<HuffmanCode>{
 			System.out.println("too small of a list");
 		}
 		return nArray;
+	}
+	public static void makeTreeF(ArrayList<Node> n){
+		if(n.size() == 1){
+			return;
+		}
+		String first = n.get(0).label;
+		String includer = null;
+		int includerIndex = -1;
+		for(int i = 1; i < n.size();i++){
+			if(n.get(i).label.contains(first)){
+				includer = n.get(i).label;
+				includerIndex = i;
+				break;
+			}
+		}
+		//we have found it's parent now let's see if the child is left or right
+		if(n.get(0).label.charAt(0) == includer.charAt(0)){
+			Node left = n.get(0);
+			Node parent = n.get(includerIndex);
+			parent.left = left;
+			n.set(includerIndex, parent);
+			//System.out.println(parent);
+		}
+		else{
+			Node right = n.get(0);
+			Node parent = n.get(includerIndex);
+			parent.right = right;
+			n.set(includerIndex, parent);	
+			//System.out.println(parent);
+		}
+		System.out.println(includer + " is the includer");
+		n.remove(0);
+		makeTreeF(n);
 	}
 	public static void makeTree(ArrayList<Node> n){
 		boolean left = false;
@@ -109,19 +146,14 @@ public static void main(String[] args){
 	while(hListcopy.size() >= 2)
 	nArray = add2smallest(hListcopy,nArray);
 	
-	makeTree(nArray);
-	
-	
-	
-	for(int i = nArray.size()-1; i >= 0 ; i--){
-	System.out.println(nArray.get(i));
-	System.out.println(i);
-	
-	}
-	
-//	for(int i=0;i<nArray.size();i++){
-//		System.out.println(nArray.indexOf(i));
-//	}
+	makeTreeF(nArray);
+	//System.out.println(nArray);
+	System.out.println("\n");
+	Node root = nArray.get(nArray.size()-1);
+	//System.out.println(root.right);
+	root.printTree(0);
+	//nArray.get(nArray.size()-1).printTree(nArray.get(nArray.size()-1).right);
+	//System.out.println(nArray.get(nArray.size()-1).right);
 	
 	
 	
