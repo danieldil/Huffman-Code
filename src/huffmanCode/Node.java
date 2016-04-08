@@ -27,7 +27,6 @@ public class Node {
 		if(this.left.data.prob == -1 && this.right.data.prob == -1){
 			if(counter > 1)
 			return;
-			
 			this.left.printTree(counter);
 			this.right.printTree(counter);
 		}
@@ -39,8 +38,9 @@ public class Node {
 			System.out.println(this + "my right is -1");
 			this.right.printTree(counter);
 		}
-		System.out.println("hello from printTree");
-		//System.out.println(x.right.data.prob);	
+		if(this.right.data.prob != -1.0 && this.left.data.prob != -1.0){
+			System.out.println(this);
+		}
 	}
 	public String toString(){
 		String s;

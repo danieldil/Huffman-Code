@@ -1,5 +1,7 @@
 package huffmanCode;
 import java.util.*;
+
+
 public class HuffmanCode implements Comparable<HuffmanCode>{
 	String letter;
 	double prob;
@@ -121,6 +123,7 @@ public class HuffmanCode implements Comparable<HuffmanCode>{
 	}
 @SuppressWarnings("unchecked")
 public static void main(String[] args){
+	//JFrame frame = new JFrame(new JComponent());
 	ArrayList<Node> nArray = new ArrayList<Node>();
 	LinkedList<HuffmanCode> hList = new LinkedList<HuffmanCode>();
 	LinkedList<HuffmanCode> hListcopy = new LinkedList<HuffmanCode>();
@@ -134,6 +137,12 @@ public static void main(String[] args){
 	hList.add(new HuffmanCode("h",.03));
 	hList.add(new HuffmanCode("i",.2));
 	hList.add(new HuffmanCode("j",.23));
+	
+//	hList.add(new HuffmanCode("a",.21));
+//	hList.add(new HuffmanCode("b",.09));
+//	hList.add(new HuffmanCode("c",.01));
+//	hList.add(new HuffmanCode("d",.33));
+//	hList.add(new HuffmanCode("e",.36));
 	
 	
 	//make a copy of the list
@@ -152,6 +161,9 @@ public static void main(String[] args){
 	Node root = nArray.get(nArray.size()-1);
 	//System.out.println(root.right);
 	root.printTree(0);
+	screen x = new screen();
+	x.setNode(root);
+	
 	//nArray.get(nArray.size()-1).printTree(nArray.get(nArray.size()-1).right);
 	//System.out.println(nArray.get(nArray.size()-1).right);
 	
