@@ -17,11 +17,11 @@ public class Node {
 	public void set(HuffmanCode d, Node l, Node r){
 		data = d;
 		left = l;
-		right =r;
+		right = r;
 	}
 	public void printTree(int counter){
 		counter++;
-		//System.out.println(this.right + " is this.right");
+//		System.out.println(this.right + " is this.right");
 //		System.out.println(this.left.data.prob);
 //		System.out.println(this.right.data.prob);
 		if(this.left.data.prob == -1 && this.right.data.prob == -1){

@@ -42,8 +42,8 @@ public class HuffmanCode implements Comparable<HuffmanCode>{
 			
 			Node head;
 //			if(s.size()<1){
-			Node left = new Node(s.get(1),new Node(),new Node(),null);
-			Node right = new Node(s.get(0),new Node(),new Node(),null);
+			Node left = new Node(s.get(1),new Node(),new Node(),s.get(1).letter);
+			Node right = new Node(s.get(0),new Node(),new Node(),s.get(0).letter);
 //			}
 //			else{
 //				Node left = new Node(s.get(1),null,null);
@@ -161,8 +161,8 @@ public static void main(String[] args){
 	Node root = nArray.get(nArray.size()-1);
 	//System.out.println(root.right);
 	root.printTree(0);
-	screen x = new screen();
-	x.setNode(root);
+//	screen x = new screen();
+//	x.setNode(root);
 	
 	//nArray.get(nArray.size()-1).printTree(nArray.get(nArray.size()-1).right);
 	//System.out.println(nArray.get(nArray.size()-1).right);
