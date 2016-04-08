@@ -27,6 +27,7 @@ public class screen extends Applet {
 	        System.out.println("preparing to unload...");
 	  }
 	  public void paint(Graphics g){
+		  	
 	        System.out.println("Paint");
 	        g.setColor(Color.black);
 	        g.drawRect(0, 0, getSize().width -1,getSize().height -1);
@@ -42,26 +43,29 @@ public class screen extends Applet {
 	        char[] label = x.data.letter.toCharArray();
 	        char[] labelleft = x.left.label.toCharArray();
 	        char[] labelright = x.right.label.toCharArray();
-	        int ovalX = width/2 -25;
-	        int ovalY = 15;
+	        int ovalX = 100;//width/2 -25;
+	        int ovalY = 150;
 	        int ovalP = 20;
-	        int ovalCentery = 35;
-	        int ovalCenterx = width/2 -2;
-	        int leftOvalx = width/2-2 - 50 -ovalP;
-	        int leftOvaly = 35 +90;
-	        int rightOvalx = width/2 -2+50-ovalP;
-	        int rightOvaly = 35+90;
+	        int ovalSize = 50;
+	        int ovalCentery = ovalY+17;
+	        int ovalCenterx = ovalX+23;
+	        int leftOvalx = ovalX -40;
+	        int leftOvaly = ovalCentery+90;
+	        int rightOvalx = ovalX + 40;
+	        int rightOvaly = ovalCentery+90;
 	        g.setColor(Color.white);
 	        //left line
 	        g.drawLine(ovalCenterx,ovalCentery,leftOvalx+30,leftOvaly);
-	        //
-	        g.drawLine(width/2-2,35,width/2-2 + 50,35 +90);
+	        //right line
+	        g.drawLine(ovalCenterx,ovalCentery,rightOvalx+19,rightOvaly);
 	        //
 	        g.setColor(Color.green);
-	        g.fillOval(leftOvalx,leftOvaly, 50, 50);
-	        g.fillOval(width/2-2 + 50 -ovalP,35 +90, 50, 50);
+	        //draw left circle
+	        g.fillOval(leftOvalx,leftOvaly, ovalSize, ovalSize);
+	        //draw right circle
+	        g.fillOval(rightOvalx,rightOvaly, ovalSize, ovalSize);
 	        //draw the root
-	        g.fillOval(width/2 -25, 15, 50, 50);
+	        g.fillOval(ovalX, ovalY, ovalSize, ovalSize);
 	        g.setColor(Color.white);
 	        g.setColor(Color.BLACK);
 	        g.drawChars(label,0,label.length,ovalX+ovalP,ovalY+ovalP);	        
