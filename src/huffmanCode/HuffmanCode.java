@@ -160,7 +160,7 @@ public static void main(String[] args){
 	System.out.println("\n");
 	Node root = nArray.get(nArray.size()-1);
 	//System.out.println(root.right);
-	root.printTree(0);
+	root.printTree(0,' ');
 //	screen x = new screen();
 //	x.setNode(root);
 	

@@ -24,14 +24,25 @@ public class screen extends Applet {
       int leftOvaly = ovalCentery+90;
       int rightOvalx = ovalX + 40;
       int rightOvaly = ovalCentery+90;
+      Node root;
       public void setRootCoord(int x, int y){
     	  ovalX = x;
     	  ovalY = y;
+          ovalP = 20;
+          ovalSize = 50;
+          ovalCentery = ovalY+17;
+          ovalCenterx = ovalX+23;
+          leftOvalx = ovalX -40;
+          leftOvaly = ovalCentery+90;
+          rightOvalx = ovalX + 40;
+          rightOvaly = ovalCentery+90;
+    	  
       }
 	  public void setNode(Node x){
 		  this.x = x;
 	  }
 	  public void init() {
+		  	
 	        text = "I'm a simple applet";
 	        setBackground(Color.black);
 	        setSize(900, 500);
@@ -48,10 +59,11 @@ public class screen extends Applet {
 	    		nArray = HuffmanCode.add2smallest(hList,nArray);
 	    	
 	    	HuffmanCode.makeTreeF(nArray);
-	    	Node root = nArray.get(nArray.size()-1);
+	    	root = nArray.get(nArray.size()-1);
 	    	x = root;
-	    	x.printTree(0);
+	    	x.printTree(0,' ');
 	        System.out.println(x);
+
 	        
 	        label = x.data.letter.toCharArray();
 	        labelleft = x.left.data.letter.toCharArray();
@@ -67,8 +79,14 @@ public class screen extends Applet {
 	  public void destroy() {
 	        System.out.println("preparing to unload...");
 	  }
+	  public void d(Graphics g){
+		  g.drawLine(2, 2, 99, 99);
+	  }
 	  public void paint(Graphics g){
-		  System.out.println("eneter the paint loop?");	
+		  x = root;
+		  setRootCoord(width/2 -25,15);
+		  boolean left = false;
+		  boolean right = false;
 		  while(true){
 			  if(x.left.data.prob == -1 && x.right.data.prob == -1){
 		  		System.out.println("eneter the while loop?");
@@ -77,20 +95,23 @@ public class screen extends Applet {
 					break;
 			  }
 			  else if(x.left.data.prob == -1.0 && x.right.data.prob != -1.0){
-				  setRootCoord(leftOvalx,leftOvaly);
+				  //setRootCoord(leftOvalx,leftOvaly);
+				  left = true;
 				  x = x.left;
 				  System.out.println("hello from left");
+				  //System.out.println(x.left.left+" is x double left");
 			  }
 			  else if(x.right.data.prob == -1.0 && x.left.data.prob != -1.0){
-				  setRootCoord(rightOvalx,rightOvaly);
+				  //setRootCoord(rightOvalx,rightOvaly);
+				  right = true;
 				  x = x.right;
 				  System.out.println("hello from right");
 			  }
 			  else if(x.right.data.prob != -1.0 && x.left.data.prob != -1.0){
 				  //System.out.println(x);
+				  System.out.println("we break");
 				  break;
 			  }
-		  	
 	        System.out.println("Paint");
 	        g.setColor(Color.black);
 	        g.drawRect(0, 0, getSize().width -1,getSize().height -1);
@@ -109,16 +130,20 @@ public class screen extends Applet {
 	        //draw the root
 	        g.fillOval(ovalX, ovalY, ovalSize, ovalSize);
 	        g.setColor(Color.white);
-	        g.setColor(Color.BLACK);
+	        g.setColor(Color.black);
 	        //draw root label
 	        g.drawChars(label,0,label.length,ovalX+ovalP,ovalY+ovalP);	        
 	        if(labelleft != null)
 	        g.drawChars(labelleft,0,labelleft.length,leftOvalx+ovalP,leftOvaly+ovalP);
 	        if(labelright != null)
 	        g.drawChars(labelright,0,labelright.length,rightOvalx+ovalP,rightOvaly+ovalP);
-	        System.out.println(labelleft);
-		  	
-		  	}
+	        if(left){
+	        	setRootCoord(leftOvalx,leftOvaly);
+	        }
+	        if(right){
+	        	setRootCoord(rightOvalx,leftOvaly);
+	        }
+		  }
 	  }
 
 }

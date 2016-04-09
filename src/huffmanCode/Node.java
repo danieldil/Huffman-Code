@@ -1,12 +1,18 @@
 package huffmanCode;
 
+import java.util.ArrayList;
+
 public class Node {
 	public HuffmanCode data;
 	public Node left;
 	public Node right;
 	String label = "-1";
+	ArrayList<Character> bit = new ArrayList<Character>();
 	public Node(){
 		this.data = new HuffmanCode();
+		this.left = null;
+		this.right= null;
+		this.label = "null";
 	}
 	public Node(HuffmanCode d, Node l, Node r, String s){
 		data = d;
@@ -19,24 +25,34 @@ public class Node {
 		left = l;
 		right = r;
 	}
-	public void printTree(int counter){
+	public void printTree(int counter,char side){
+		//If i was called by left i will add a 0
+		if(side == 'l'){
+			this.right.bit.add('0');
+			this.left.bit.add('0');
+		}
+		if(side == 'r'){
+			this.right.bit.add('1');
+			this.left.bit.add('1');
+		}
 		counter++;
-//		System.out.println(this.right + " is this.right");
-//		System.out.println(this.left.data.prob);
-//		System.out.println(this.right.data.prob);
 		if(this.left.data.prob == -1 && this.right.data.prob == -1){
 			if(counter > 1)
 			return;
-			this.left.printTree(counter);
-			this.right.printTree(counter);
+			this.left.printTree(counter,'l');
+			this.right.printTree(counter,'r');
 		}
 		if(this.left.data.prob == -1.0 && this.right.data.prob != -1.0){
+			this.right.bit.add('1');
+			this.left.bit.add('0');
 			System.out.println(this + "my left is -1");
-			this.left.printTree(counter);
+			this.left.printTree(counter,'l');
 		}
 		if(this.right.data.prob == -1.0 && this.left.data.prob != -1.0){
+			this.right.bit.add('1');
+			this.left.bit.add('0');
 			System.out.println(this + "my right is -1");
-			this.right.printTree(counter);
+			this.right.printTree(counter,'r');
 		}
 		if(this.right.data.prob != -1.0 && this.left.data.prob != -1.0){
 			System.out.println(this);
@@ -47,13 +63,17 @@ public class Node {
 		if(this.right != null){
 			s = 
 			String.valueOf((
-					"   "+
+					"      "+
 					this.label+
 					"\n"+
 					this.left.data.prob+ 
 					//this.left.data.letter+ 
 					"   _   "+ 
 					this.right.data.prob+
+					"\n"+
+					this.left.bit.toString()+
+					"   _  "+
+					this.right.bit.toString()+
 					"\n"
 					//this.right.data.letter
 					));
