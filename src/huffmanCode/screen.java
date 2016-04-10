@@ -41,33 +41,36 @@ public class screen extends Applet {
 	  public void setNode(Node x){
 		  this.x = x;
 	  }
+	  public void paint3(Graphics g){
+		  g.drawLine(1, 1, 50, 50);
+	  }
 	  public void init() {
 		  	
-	        text = "I'm a simple applet";
-	        setBackground(Color.black);
-	        setSize(900, 500);
-	    	ArrayList<Node> nArray = new ArrayList<Node>();
-	    	LinkedList<HuffmanCode> hList = new LinkedList<HuffmanCode>();
-	        HuffmanCode d = new HuffmanCode("d",.3);
-	        HuffmanCode a = new HuffmanCode("a",.5);
-	        HuffmanCode c = new HuffmanCode("c",.2);
-	        hList.add(d);
-	        hList.add(a);
-	        hList.add(c);
+		  text = "I'm a simple applet";
+	      setBackground(Color.black);
+	      setSize(900, 500);
+	      ArrayList<Node> nArray = new ArrayList<Node>();
+	      LinkedList<HuffmanCode> hList = new LinkedList<HuffmanCode>();
+	      HuffmanCode d = new HuffmanCode("d",.3);
+	      HuffmanCode a = new HuffmanCode("a",.5);
+	      HuffmanCode c = new HuffmanCode("c",.2);
+	      hList.add(d);
+	      hList.add(a);
+	      hList.add(c);
 	        
-	    	while(hList.size() >= 2)
-	    		nArray = HuffmanCode.add2smallest(hList,nArray);
+	      while(hList.size() >= 2)
+	    	  nArray = HuffmanCode.add2smallest(hList,nArray);
 	    	
-	    	HuffmanCode.makeTreeF(nArray);
-	    	root = nArray.get(nArray.size()-1);
-	    	x = root;
-	    	x.printTree(0,' ');
-	        System.out.println(x);
+	      HuffmanCode.makeTreeF(nArray);
+	      root = nArray.get(nArray.size()-1);
+	      x = root;
+	      x.printTree(0,' ');
+	      System.out.println(x);
 
 	        
-	        label = x.data.letter.toCharArray();
-	        labelleft = x.left.data.letter.toCharArray();
-	        labelright = x.right.data.letter.toCharArray();
+	      label = x.data.letter.toCharArray();
+	      labelleft = x.left.data.letter.toCharArray();
+	      labelright = x.right.data.letter.toCharArray();
 	        
 	  }
 	  public void start() {
@@ -80,6 +83,7 @@ public class screen extends Applet {
 	        System.out.println("preparing to unload...");
 	  }
 	  public void d(Graphics g){
+		  g.setColor(Color.white);
 		  g.drawLine(2, 2, 99, 99);
 	  }
 	  public void paint(Graphics g){
@@ -143,6 +147,7 @@ public class screen extends Applet {
 	        if(right){
 	        	setRootCoord(rightOvalx,leftOvaly);
 	        }
+	       d(g);
 		  }
 	  }
 
