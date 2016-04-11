@@ -65,13 +65,8 @@ public class screen extends Applet {
 	      root = nArray.get(nArray.size()-1);
 	      x = root;
 	      x.printTree(0,' ');
-	      System.out.println(x);
-
-	        
-	      label = x.data.letter.toCharArray();
-	      labelleft = x.left.data.letter.toCharArray();
-	      labelright = x.right.data.letter.toCharArray();
-	        
+	      //System.out.println(x);
+  
 	  }
 	  public void start() {
 	        System.out.println("starting...");
@@ -82,43 +77,17 @@ public class screen extends Applet {
 	  public void destroy() {
 	        System.out.println("preparing to unload...");
 	  }
-	  public void d(Graphics g){
-		  g.setColor(Color.white);
-		  g.drawLine(2, 2, 99, 99);
-	  }
-	  public void paint(Graphics g){
-		  x = root;
-		  setRootCoord(width/2 -25,15);
-		  boolean left = false;
-		  boolean right = false;
-		  while(true){
-			  if(x.left.data.prob == -1 && x.right.data.prob == -1){
-		  		System.out.println("eneter the while loop?");
-		  		count++;
-				if(count > 2)
-					break;
-			  }
-			  else if(x.left.data.prob == -1.0 && x.right.data.prob != -1.0){
-				  //setRootCoord(leftOvalx,leftOvaly);
-				  left = true;
-				  x = x.left;
-				  System.out.println("hello from left");
-				  //System.out.println(x.left.left+" is x double left");
-			  }
-			  else if(x.right.data.prob == -1.0 && x.left.data.prob != -1.0){
-				  //setRootCoord(rightOvalx,rightOvaly);
-				  right = true;
-				  x = x.right;
-				  System.out.println("hello from right");
-			  }
-			  else if(x.right.data.prob != -1.0 && x.left.data.prob != -1.0){
-				  //System.out.println(x);
-				  System.out.println("we break");
-				  break;
-			  }
+	  public void d(Graphics g, Node q){
+		  
+			x = q;
+		  	label = x.data.letter.toCharArray();
+	      	labelleft = x.left.data.letter.toCharArray();
+	      	labelright = x.right.data.letter.toCharArray();
+	      
+		  
 	        System.out.println("Paint");
 	        g.setColor(Color.black);
-	        g.drawRect(0, 0, getSize().width -1,getSize().height -1);
+	        //g.drawRect(0, 0, getSize().width -1,getSize().height -1);
 	        g.setColor(Color.red);
 	        g.drawString(text, 15, 25);
 	        g.setColor(Color.white);
@@ -137,18 +106,43 @@ public class screen extends Applet {
 	        g.setColor(Color.black);
 	        //draw root label
 	        g.drawChars(label,0,label.length,ovalX+ovalP,ovalY+ovalP);	        
+	        
 	        if(labelleft != null)
 	        g.drawChars(labelleft,0,labelleft.length,leftOvalx+ovalP,leftOvaly+ovalP);
 	        if(labelright != null)
 	        g.drawChars(labelright,0,labelright.length,rightOvalx+ovalP,rightOvaly+ovalP);
-	        if(left){
-	        	setRootCoord(leftOvalx,leftOvaly);
-	        }
-	        if(right){
-	        	setRootCoord(rightOvalx,leftOvaly);
-	        }
-	       d(g);
-		  }
+		  	
+	        //x = q;
+			if(q.left.data.prob == -1 && q.right.data.prob == -1){
+				System.out.println("eneter the while loop?");
+		  		d(g,q.left);
+		  		d(g,q.right);
+		  		count++;
+			}
+			else if(q.left.data.prob == -1.0 && q.right.data.prob != -1.0){
+				setRootCoord(leftOvalx,leftOvaly);
+				d(g,q.left);
+			  	  //x = q.left;
+			  System.out.println("hello from left");
+				  //System.out.println(x.left.left+" is x double left");
+			}
+			else if(q.right.data.prob == -1.0 && q.left.data.prob != -1.0){
+			  //setRootCoord(rightOvalx,rightOvaly);
+			  	  d(g,q.right);
+			  	  //x = q.right;
+				  System.out.println("hello from right");
+			}
+			else if(q.right.data.prob != -1.0 && q.left.data.prob != -1.0){
+				  x = q;  
+			}
 	  }
+	  public void paint(Graphics g){
+		  
+		  System.out.println(x);
+		  System.out.println(x.left+"APPLE");
+		  System.out.println(x.right+"rAPPLE");
+		  d(g,x);
+	  }
+	  
 
 }
