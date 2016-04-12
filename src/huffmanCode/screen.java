@@ -49,16 +49,15 @@ public class screen extends Applet {
 	      ArrayList<Node> nArray = new ArrayList<Node>();
 	      LinkedList<HuffmanCode> hList = new LinkedList<HuffmanCode>();
 
-	  	hList.add(new HuffmanCode("a",.1));
-	  	hList.add(new HuffmanCode("b",.2));
-	  	hList.add(new HuffmanCode("c",.08));
-	  	hList.add(new HuffmanCode("d",.02));
-	  	hList.add(new HuffmanCode("e",.05));
-	  	hList.add(new HuffmanCode("f",.05));
-	  	hList.add(new HuffmanCode("g",.04));
-	  	hList.add(new HuffmanCode("h",.03));
-	  	hList.add(new HuffmanCode("i",.2));
-	  	hList.add(new HuffmanCode("j",.23));
+	  	hList.add(new HuffmanCode("q",.29));
+	  	hList.add(new HuffmanCode("j",.11));
+	  	hList.add(new HuffmanCode("k",.14));
+	  	hList.add(new HuffmanCode("y",.26));
+	  	hList.add(new HuffmanCode("r",.19));
+	  	hList.add(new HuffmanCode("m",.17));
+	  	hList.add(new HuffmanCode("b",.67));
+	  	
+
 	        
 	      while(hList.size() >= 2)
 	    	  nArray = HuffmanCode.add2smallest(hList,nArray);
@@ -101,7 +100,7 @@ public class screen extends Applet {
 	        g.setColor(Color.green);
 	        //draw the root
 	        g.fillOval(ovalX, ovalY, ovalSize, ovalSize);
-	        if(q.right.data.prob != -1.0 && q.left.data.prob != -1.0)
+	        if(q.right.data.prob != -1.0 && q.left.data.prob != -1.0 || count == 1)
 	        	g.setColor(Color.yellow);
 	        //draw left circle
 	        if(count == -8)

@@ -36,9 +36,7 @@ public class Node {
 			this.left.bit.add('1');
 		}
 		counter++;
-		if(this.left.data.prob == -1 && this.right.data.prob == -1){
-			if(counter > 1)
-			return;
+		if(this.left.data.prob == -1 && this.right.data.prob == -1 && this.label.length()!=1){
 			this.left.printTree(counter,'l');
 			this.right.printTree(counter,'r');
 		}
@@ -54,7 +52,7 @@ public class Node {
 			System.out.println(this + "my right is -1");
 			this.right.printTree(counter,'r');
 		}
-		if(this.right.data.prob != -1.0 && this.left.data.prob != -1.0){
+		if(this.right.data.prob != -1.0 && this.left.data.prob != -1.0 ){
 			System.out.println(this);
 		}
 	}
