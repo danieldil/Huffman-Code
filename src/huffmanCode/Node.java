@@ -37,6 +37,7 @@ public class Node {
 		}
 		counter++;
 		if(this.left.data.prob == -1 && this.right.data.prob == -1 && this.label.length()!=1){
+			System.out.println(this);
 			this.left.printTree(counter,'l');
 			this.right.printTree(counter,'r');
 		}

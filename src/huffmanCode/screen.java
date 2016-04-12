@@ -25,6 +25,11 @@ public class screen extends Applet {
       int rightOvalx = ovalX + 40;
       int rightOvaly = ovalCentery+90;
       Node root;
+      Node newroot;
+      int newlx;
+      int newly;
+      int newrx;
+      int newry;
 
       public void setRootCoord(int x, int y){
     	  ovalX = x;
@@ -49,13 +54,24 @@ public class screen extends Applet {
 	      ArrayList<Node> nArray = new ArrayList<Node>();
 	      LinkedList<HuffmanCode> hList = new LinkedList<HuffmanCode>();
 
-	  	hList.add(new HuffmanCode("q",.29));
-	  	hList.add(new HuffmanCode("j",.11));
-	  	hList.add(new HuffmanCode("k",.14));
-	  	hList.add(new HuffmanCode("y",.26));
-	  	hList.add(new HuffmanCode("r",.19));
-	  	hList.add(new HuffmanCode("m",.17));
-	  	hList.add(new HuffmanCode("b",.67));
+//	  	hList.add(new HuffmanCode("q",.29));
+//	  	hList.add(new HuffmanCode("j",.11));
+//	  	hList.add(new HuffmanCode("k",.14));
+//	  	hList.add(new HuffmanCode("y",.26));
+//	  	hList.add(new HuffmanCode("r",.19));
+//	  	hList.add(new HuffmanCode("m",.17));
+//	  	hList.add(new HuffmanCode("b",.67));
+
+	  	hList.add(new HuffmanCode("a",.1));
+	  	hList.add(new HuffmanCode("b",.2));
+	  	hList.add(new HuffmanCode("c",.08));
+	  	hList.add(new HuffmanCode("d",.02));
+	  	hList.add(new HuffmanCode("e",.05));
+	  	hList.add(new HuffmanCode("f",.05));
+	  	hList.add(new HuffmanCode("g",.04));
+	  	hList.add(new HuffmanCode("h",.03));
+	  	hList.add(new HuffmanCode("i",.2));
+	  	hList.add(new HuffmanCode("j",.23));
 	  	
 
 	        
@@ -79,7 +95,7 @@ public class screen extends Applet {
 	        System.out.println("preparing to unload...");
 	  }
 	  public void d(Graphics g, Node q,int count){
-		  	if(count == 0){
+		  	if(count == 0||q.left.data.prob == -1 && q.right.data.prob == -1){
 		  		leftOvalx -=90;
 		  		rightOvalx +=90;
 		  	}
@@ -119,17 +135,20 @@ public class screen extends Applet {
 	        if(labelright != null)
 	        	g.drawChars(labelright,0,labelright.length,rightOvalx+ovalP,rightOvaly+ovalP);
 		  	
-			if(q.left.data.prob == -1 && q.right.data.prob == -1){
+			if(q.left.data.prob == -1 && q.right.data.prob == -1&& q.label.length()!=1){
 				System.out.println("eneter the both ?");
-				x = root;
-				setRootCoord(width/2 -25,15);
-				setRootCoord(leftOvalx-90,leftOvaly);
+				newlx = leftOvalx;
+				newly = leftOvaly;
+				newrx = rightOvalx;
+				newry = rightOvaly;
+				//x = root;
+				setRootCoord(newlx,newly);
+				//setRootCoord(leftOvalx,leftOvaly);
 				d(g,q.left,-9);
-		  		x = root;
-		  		setRootCoord(width/2 -25,15);
-		  		setRootCoord(rightOvalx+90,rightOvaly);
+				//x = root;
+		  		//setRootCoord(width/2 -25,15);
+		  		setRootCoord(newrx,newry);
 		  		d(g,q.right,-9);
-		  		//count++;
 			}
 			else if(q.left.data.prob == -1.0 && q.right.data.prob != -1.0){
 				System.out.println("hello from left");
@@ -139,15 +158,10 @@ public class screen extends Applet {
 			else if(q.right.data.prob == -1.0 && q.left.data.prob != -1.0){
 				System.out.println("hello from right"); 
 				setRootCoord(rightOvalx,rightOvaly);
-				d(g,q.right,-9);
-			  	  //x = q.right;
-				  
+				d(g,q.right,-9);				  
 			}
 			else if(q.right.data.prob != -1.0 && q.left.data.prob != -1.0){
 				System.out.println("hellofsdjkl");
-				//return;
-				//x = q;  
-				//return;
 			}
 	  }
 	  public void paint(Graphics g){
