@@ -127,22 +127,22 @@ public static void main(String[] args){
 	ArrayList<Node> nArray = new ArrayList<Node>();
 	LinkedList<HuffmanCode> hList = new LinkedList<HuffmanCode>();
 	LinkedList<HuffmanCode> hListcopy = new LinkedList<HuffmanCode>();
-	hList.add(new HuffmanCode("a",.1));
-	hList.add(new HuffmanCode("b",.2));
-	hList.add(new HuffmanCode("c",.08));
-	hList.add(new HuffmanCode("d",.02));
-	hList.add(new HuffmanCode("e",.05));
-	hList.add(new HuffmanCode("f",.05));
-	hList.add(new HuffmanCode("g",.04));
-	hList.add(new HuffmanCode("h",.03));
-	hList.add(new HuffmanCode("i",.2));
-	hList.add(new HuffmanCode("j",.23));
+//	hList.add(new HuffmanCode("a",.1));
+//	hList.add(new HuffmanCode("b",.2));
+//	hList.add(new HuffmanCode("c",.08));
+//	hList.add(new HuffmanCode("d",.02));
+//	hList.add(new HuffmanCode("e",.05));
+//	hList.add(new HuffmanCode("f",.05));
+//	hList.add(new HuffmanCode("g",.04));
+//	hList.add(new HuffmanCode("h",.03));
+//	hList.add(new HuffmanCode("i",.2));
+//	hList.add(new HuffmanCode("j",.23));
 	
-//	hList.add(new HuffmanCode("a",.21));
-//	hList.add(new HuffmanCode("b",.09));
-//	hList.add(new HuffmanCode("c",.01));
-//	hList.add(new HuffmanCode("d",.33));
-//	hList.add(new HuffmanCode("e",.36));
+	hList.add(new HuffmanCode("a",.21));
+	hList.add(new HuffmanCode("b",.09));
+	hList.add(new HuffmanCode("c",.01));
+	hList.add(new HuffmanCode("d",.33));
+	hList.add(new HuffmanCode("e",.36));
 	
 	
 	//make a copy of the list
