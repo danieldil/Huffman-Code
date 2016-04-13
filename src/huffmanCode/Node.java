@@ -28,10 +28,12 @@ public class Node {
 	public void printTree(int counter,char side){
 		//If i was called by left i will add a 0
 		if(side == 'l'){
+			this.bit.add('0');
 			this.right.bit.add('0');
 			this.left.bit.add('0');
 		}
 		if(side == 'r'){
+			this.bit.add('1');
 			this.right.bit.add('1');
 			this.left.bit.add('1');
 		}
@@ -55,6 +57,8 @@ public class Node {
 		}
 		if(this.right.data.prob != -1.0 && this.left.data.prob != -1.0 ){
 			System.out.println(this);
+			this.left.bit.add('l');
+			this.right.bit.add('r');
 		}
 	}
 	public String toString(){
@@ -63,7 +67,7 @@ public class Node {
 			s = 
 			String.valueOf((
 					"      "+
-					this.label+
+					this.label+" "+this.bit+
 					"\n"+
 					this.left.data.prob+ 
 					//this.left.data.letter+ 

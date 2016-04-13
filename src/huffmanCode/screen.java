@@ -78,9 +78,9 @@ public class screen extends Applet {
 		hList.add(new HuffmanCode("u",.22));
 		hList.add(new HuffmanCode("v",.15));
 		hList.add(new HuffmanCode("w",.08));
-		hList.add(new HuffmanCode("x",.2));
+//		hList.add(new HuffmanCode("x",.2));
 //		hList.add(new HuffmanCode("y",.1));
-		hList.add(new HuffmanCode("z",.25));
+//		hList.add(new HuffmanCode("z",.25));
 	      
 	     
 //	  	hList.add(new HuffmanCode("a",.1));
