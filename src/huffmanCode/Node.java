@@ -25,20 +25,25 @@ public class Node {
 		left = l;
 		right = r;
 	}
+	public void printBin(){
+		
+	}
 	public void printTree(int counter,char side){
 		//If i was called by left i will add a 0
 		if(side == 'l'){
-			this.bit.add('0');
-			this.right.bit.add('0');
-			this.left.bit.add('0');
+//			this.bit.add('0');
+//			this.right.bit.add('0');
+//			this.left.bit.add('0');
 		}
 		if(side == 'r'){
-			this.bit.add('1');
-			this.right.bit.add('1');
-			this.left.bit.add('1');
+//			this.bit.add('1');
+//			this.right.bit.add('1');
+//			this.left.bit.add('1');
 		}
 		counter++;
 		if(this.left.data.prob == -1 && this.right.data.prob == -1 && this.label.length()!=1){
+			this.right.bit.add('1');
+			this.left.bit.add('0');
 			System.out.println(this);
 			this.left.printTree(counter,'l');
 			this.right.printTree(counter,'r');
@@ -49,16 +54,17 @@ public class Node {
 			System.out.println(this + "my left is -1");
 			this.left.printTree(counter,'l');
 		}
-		if(this.right.data.prob == -1.0 && this.left.data.prob != -1.0){
+		if(this.left.data.prob != -1.0 && this.right.data.prob == -1.0){
 			this.right.bit.add('1');
 			this.left.bit.add('0');
 			System.out.println(this + "my right is -1");
 			this.right.printTree(counter,'r');
 		}
 		if(this.right.data.prob != -1.0 && this.left.data.prob != -1.0 ){
+			this.left.bit.add('0');
+			this.right.bit.add('1');
 			System.out.println(this);
-			this.left.bit.add('l');
-			this.right.bit.add('r');
+			System.out.println(this.left+ " " + this.right);
 		}
 	}
 	public String toString(){

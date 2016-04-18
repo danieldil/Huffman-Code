@@ -57,16 +57,16 @@ public class screen extends Applet {
 //	  	hList.add(new HuffmanCode("q",.29));
 //	  	hList.add(new HuffmanCode("j",.11));
 //	  	hList.add(new HuffmanCode("k",.14));
-	  	hList.add(new HuffmanCode("y",.26));
-	  	hList.add(new HuffmanCode("r",.19));
-	  	hList.add(new HuffmanCode("m",.17));
-	  	hList.add(new HuffmanCode("b",.67));
+//	  	hList.add(new HuffmanCode("y",.26));
+//	  	hList.add(new HuffmanCode("r",.19));
+//	  	hList.add(new HuffmanCode("m",.17));
+//	  	hList.add(new HuffmanCode("b",.67));
 	      
-	    hList.add(new HuffmanCode("a",.4));
-	    //hList.add(new HuffmanCode("b",.1));
-	    hList.add(new HuffmanCode("c",.1));
-	    hList.add(new HuffmanCode("d",.11));
-	    hList.add(new HuffmanCode("k",.4));
+//	    hList.add(new HuffmanCode("a",.4));
+//	    hList.add(new HuffmanCode("b",.1));
+//	    hList.add(new HuffmanCode("c",.1));
+//	    hList.add(new HuffmanCode("d",.11));
+//	    hList.add(new HuffmanCode("k",.4));
 	      
 //		hList.add(new HuffmanCode("c",.45));
 //	  	hList.add(new HuffmanCode("b",.15));
@@ -75,24 +75,24 @@ public class screen extends Applet {
 //	  	hList.add(new HuffmanCode("d",.20));
 
 
-		hList.add(new HuffmanCode("u",.22));
-		hList.add(new HuffmanCode("v",.15));
-		hList.add(new HuffmanCode("w",.08));
+//		hList.add(new HuffmanCode("u",.22));
+//		hList.add(new HuffmanCode("v",.15));
+//		hList.add(new HuffmanCode("w",.08));
 //		hList.add(new HuffmanCode("x",.2));
 //		hList.add(new HuffmanCode("y",.1));
 //		hList.add(new HuffmanCode("z",.25));
 	      
 	     
-//	  	hList.add(new HuffmanCode("a",.1));
-//	  	hList.add(new HuffmanCode("b",.2));
-//	  	hList.add(new HuffmanCode("c",.08));
-//	  	hList.add(new HuffmanCode("d",.02));
-//	  	hList.add(new HuffmanCode("e",.05));
-//	  	hList.add(new HuffmanCode("f",.05));
-//	  	hList.add(new HuffmanCode("g",.04));
-//	  	hList.add(new HuffmanCode("h",.03));
-//	  	hList.add(new HuffmanCode("i",.2));
-//	  	hList.add(new HuffmanCode("j",.23));
+	  	hList.add(new HuffmanCode("a",.1));
+	  	hList.add(new HuffmanCode("b",.2));
+	  	hList.add(new HuffmanCode("c",.08));
+	  	hList.add(new HuffmanCode("d",.02));
+	  	hList.add(new HuffmanCode("e",.05));
+	  	hList.add(new HuffmanCode("f",.05));
+	  	hList.add(new HuffmanCode("g",.04));
+	  	hList.add(new HuffmanCode("h",.03));
+	  	hList.add(new HuffmanCode("i",.2));
+	  	hList.add(new HuffmanCode("j",.23));
 	  	
 
 	        
