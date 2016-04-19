@@ -30,16 +30,6 @@ public class Node {
 	}
 	public void printTree(int counter,char side){
 		//If i was called by left i will add a 0
-		if(side == 'l'){
-//			this.bit.add('0');
-//			this.right.bit.add('0');
-//			this.left.bit.add('0');
-		}
-		if(side == 'r'){
-//			this.bit.add('1');
-//			this.right.bit.add('1');
-//			this.left.bit.add('1');
-		}
 		counter++;
 		if(this.left.data.prob == -1 && this.right.data.prob == -1 && this.label.length()!=1){
 			this.right.bit.add('1');
