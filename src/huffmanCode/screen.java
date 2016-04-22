@@ -9,9 +9,11 @@ import javax.swing.JOptionPane;
 
 
 public class screen extends Applet {
+	  LinkedList<HuffmanCode> hList;
 	  String text = "I'm a simple applet";
 	  String input;
 	  Node x;//the root
+	  int hListLength;
 	  int count = 0;
 	  int width = 900;
       int ovalX = width/2 -25;
@@ -55,24 +57,24 @@ public class screen extends Applet {
 	      setBackground(Color.black);
 	      setSize(900, 500);
 	      ArrayList<Node> nArray = new ArrayList<Node>();
-	      LinkedList<HuffmanCode> hList = new LinkedList<HuffmanCode>();
-	      input =JOptionPane.showInputDialog("How many letters do you want to add");
-	      int amount = Integer.parseInt(input);
-	      String[] carray = new String[amount];
-	      double[]darray = new double[amount];
-	      for(int i = 0; i < amount; i++){
-	    	  //get first letter
-	    	  
-	    	carray[i] = JOptionPane.showInputDialog("Enter the label for number"
-	    	  		+ (i+1));
-	    	String first =Character.toString(carray[i].charAt(0));
-	    	//carray[i] = x[0];
-	    	  //get first probability
-	    	darray[i] = Double.parseDouble(
-	    			  JOptionPane.showInputDialog("Enter the probability for number "
-		    	  		+i+1));
-	    	  hList.add(new HuffmanCode(first,darray[i]));
-	      }
+	      hList = new LinkedList<HuffmanCode>();
+//	      input =JOptionPane.showInputDialog("How many letters do you want to add");
+//	      int amount = Integer.parseInt(input);
+//	      String[] carray = new String[amount];
+//	      double[]darray = new double[amount];
+//	      for(int i = 0; i < amount; i++){
+//	    	  //get first letter
+//	    	  
+//	    	carray[i] = JOptionPane.showInputDialog("Enter the label for number"
+//	    	  		+ (i+1));
+//	    	String first =Character.toString(carray[i].charAt(0));
+//	    	//carray[i] = x[0];
+//	    	  //get first probability
+//	    	darray[i] = Double.parseDouble(
+//	    			  JOptionPane.showInputDialog("Enter the probability for number "
+//		    	  		+i+1));
+//	    	  hList.add(new HuffmanCode(first,darray[i]));
+//	      }
 //		SUBTREE EXAMPLE
 //	  	hList.add(new HuffmanCode("q",.29));
 //	  	hList.add(new HuffmanCode("j",.11));
@@ -103,17 +105,17 @@ public class screen extends Applet {
 //		hList.add(new HuffmanCode("z",.25));
 	      
 	     
-//	  	hList.add(new HuffmanCode("a",.1));
-//	  	hList.add(new HuffmanCode("b",.2));
-//	  	hList.add(new HuffmanCode("c",.08));
-//	  	hList.add(new HuffmanCode("d",.02));
-//	  	hList.add(new HuffmanCode("e",.05));
-//	  	hList.add(new HuffmanCode("f",.05));
-//	  	hList.add(new HuffmanCode("g",.04));
-//	  	hList.add(new HuffmanCode("h",.03));
-//	  	hList.add(new HuffmanCode("i",.2));
-//	  	hList.add(new HuffmanCode("j",.23));
-	  		        
+	  	hList.add(new HuffmanCode("a",.1));
+	  	hList.add(new HuffmanCode("b",.2));
+	  	hList.add(new HuffmanCode("c",.08));
+	  	hList.add(new HuffmanCode("d",.02));
+	  	hList.add(new HuffmanCode("e",.05));
+	  	hList.add(new HuffmanCode("f",.05));
+	  	hList.add(new HuffmanCode("g",.04));
+	  	hList.add(new HuffmanCode("h",.03));
+	  	hList.add(new HuffmanCode("i",.2));
+	  	hList.add(new HuffmanCode("j",.23));
+	  	hListLength = hList.size();
 	    while(hList.size() >= 2)
 	    	nArray = HuffmanCode.add2smallest(hList,nArray);
 	    	
@@ -149,8 +151,10 @@ public class screen extends Applet {
 	        g.setColor(Color.white);
 	        //left line
 	        g.drawLine(ovalCenterx,ovalCentery,leftOvalx+30,leftOvaly);
+        	g.drawString("0", (ovalCenterx+leftOvalx+30)/2 -10, (ovalCentery+leftOvaly)/2);
 	        //right line
 	        g.drawLine(ovalCenterx,ovalCentery,rightOvalx+19,rightOvaly);
+	        g.drawString("1", (ovalCenterx+rightOvalx+19)/2 +10, (ovalCentery+rightOvaly)/2);
 	        g.setColor(Color.green);
 	        //draw the root
 	        g.fillOval(ovalX, ovalY, ovalSize, ovalSize);
@@ -204,6 +208,8 @@ public class screen extends Applet {
 			}
 	  }
 	  public void paint(Graphics g){
+		  g.setColor(Color.white);
+		  g.drawString(hList.get(0).letter, 10, 100);
 		  x = root;
 		  setRootCoord(width/2 -25,15);
 		  d(g,x,0);
